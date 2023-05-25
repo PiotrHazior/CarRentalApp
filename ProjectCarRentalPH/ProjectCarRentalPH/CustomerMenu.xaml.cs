@@ -23,5 +23,23 @@ namespace ProjectCarRentalPH
         {
             InitializeComponent();
         }
+
+        private void RentalMenu(object sender, RoutedEventArgs e)
+        {
+            if (Pass.Password != "" && ID_Customer.Text != "")
+            {
+                if (Pass.Password == "test" && ID_Customer.Text == "user1")
+                {
+                    MessageBox.Show("Login successful!");
+                    RentalMenu objRentalMenu = new RentalMenu();
+                    this.Visibility = Visibility.Hidden;
+                    objRentalMenu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid user ID or password!");
+                }
+            }
+        }
     }
 }

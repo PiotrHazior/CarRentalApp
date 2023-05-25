@@ -7,7 +7,71 @@
         mc:Ignorable="d"
         Title="CustomerMenu" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="356,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="204" Width="300" FontSize="24"><Run Language="pl-pl" Text="TEST CUSTOMER"/></TextBlock>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="471,37,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="51" 
+            Width="195" 
+            FontSize="24" 
+            FontWeight="Bold" 
+            FontFamily="Arial Black">
+                <Run 
+                    Language="pl-pl" 
+                    Text="LOGIN USER"/>
+        </TextBlock>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="356,142,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="33" 
+            Width="166" 
+            FontSize="22" 
+            FontWeight="Bold" 
+            FontFamily="Arial Black">
+            <Run 
+                Language="pl-pl" 
+                Text="ID_Customer"/>
+        </TextBlock>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="356,234,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="30" 
+            Width="166" 
+            FontSize="22" 
+            FontFamily="Arial Black" 
+            FontWeight="Bold">
+            <Run 
+                Language="pl-pl" 
+                Text="Password"/>
+        </TextBlock>
+        <TextBox
+            x:Name="ID_Customer"
+            HorizontalAlignment="Left" 
+            Margin="576,142,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="180" 
+            Height="33" 
+            RenderTransformOrigin="0.186,0.591"/>
+        <PasswordBox 
+            x:Name="Pass"
+            HorizontalAlignment="Left"
+            Margin="576,234,0,0" 
+            VerticalAlignment="Top"
+            Width="180" 
+            Height="30"/>
+        <Button 
+            Content="SUBMIT" 
+            HorizontalAlignment="Left" 
+            Margin="576,324,0,0" 
+            VerticalAlignment="Top" 
+            Height="34" Width="180" 
+            Click="RentalMenu"/>
 
     </Grid>
 </Window>
