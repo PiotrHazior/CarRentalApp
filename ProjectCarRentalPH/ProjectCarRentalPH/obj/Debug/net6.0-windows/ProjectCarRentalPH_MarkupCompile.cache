@@ -1,5 +1,5 @@
 ﻿ProjectCarRentalPH
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\App.xaml
 3196850697
 
-7-280396830
+52141548139
 2221674843619
 CustomerMenu.xaml;EmployeeMenu.xaml;MainWindow.xaml;
 
-True
+False
 

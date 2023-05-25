@@ -1,0 +1,13 @@
+﻿<Window x:Class="ProjectCarRentalPH.EmployeeMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectCarRentalPH"
+        mc:Ignorable="d"
+        Title="EmployeeMenu" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="349,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Height="295" Width="208" FontSize="36"><Run Language="pl-pl" Text="TEST EMPLOYEE"/></TextBlock>
+
+    </Grid>
+</Window>

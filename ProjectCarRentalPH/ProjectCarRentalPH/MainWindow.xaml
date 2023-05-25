@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="699" FontSize="36" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="SPORT CAR RENTAL APPLICATION"/></TextBlock>
+        <Button Content="CUSTOMER" HorizontalAlignment="Left" Margin="521,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.509,-0.153" Height="73" Width="151" FontWeight="Bold" FontFamily="Arial Black" FontSize="20" Click="CustomerMenu"/>
+        <Button Content="EMPLOYEE" HorizontalAlignment="Left" Margin="122,283,0,0" VerticalAlignment="Top" Height="73" Width="150" FontSize="20" FontWeight="Bold" FontFamily="Arial Black" Click="EmployeeMenu"/>
 
     </Grid>
 </Window>

@@ -24,5 +24,19 @@ namespace ProjectCarRentalPH
         {
             InitializeComponent();
         }
+
+        private void EmployeeMenu(object sender, RoutedEventArgs e)
+        {
+            EmployeeMenu objEmployeeMenu = new EmployeeMenu();
+            this.Visibility = Visibility.Hidden;
+            objEmployeeMenu.Show();
+        }
+
+        private void CustomerMenu(object sender, RoutedEventArgs e)
+        {
+            CustomerMenu objCustomerMenu = new CustomerMenu();
+            this.Visibility = Visibility.Hidden;
+            objCustomerMenu.Show();
+        }
     }
 }
