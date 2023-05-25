@@ -24,6 +24,7 @@ namespace ProjectCarRentalPH
             InitializeComponent();
         }
 
+        // Warunek logowania klienta
         private void RentalMenu(object sender, RoutedEventArgs e)
         {
             if (Pass.Password != "" && ID_Customer.Text != "")
@@ -40,6 +41,14 @@ namespace ProjectCarRentalPH
                     MessageBox.Show("Invalid user ID or password!");
                 }
             }
+        }
+
+        // Przenosi do poprzedniego okna (Main Windowsa)
+        private void MainWindow(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = new MainWindow();
+            this.Visibility = Visibility.Hidden;
+            objMainWindow.Show();
         }
     }
 }

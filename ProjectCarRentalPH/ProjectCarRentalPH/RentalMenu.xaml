@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="RentalMenu" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="363,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="RENTAL"/></TextBlock>
+
     </Grid>
 </Window>

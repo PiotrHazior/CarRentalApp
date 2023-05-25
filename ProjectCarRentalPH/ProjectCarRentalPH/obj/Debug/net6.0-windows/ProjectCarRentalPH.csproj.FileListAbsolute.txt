@@ -69,3 +69,5 @@ C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCar
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\CustomerMenu.baml
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RentalMenu.g.cs
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RentalMenu.baml
+C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\ManageCarsMenu.g.cs
+C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\ManageCarsMenu.baml

@@ -72,6 +72,7 @@
             VerticalAlignment="Top" 
             Height="34" Width="180" 
             Click="RentalMenu"/>
+        <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="MainWindow"/>
 
     </Grid>
 </Window>

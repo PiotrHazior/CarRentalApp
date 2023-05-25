@@ -23,5 +23,31 @@ namespace ProjectCarRentalPH
         {
             InitializeComponent();
         }
+
+        private void ManageCarsMenu(object sender, RoutedEventArgs e)
+        {
+            if (Pass2.Password != "" && ID_Employee.Text != "")
+            {
+                if (Pass2.Password == "test" && ID_Employee.Text == "user1")
+                {
+                    MessageBox.Show("Login successful!");
+                    ManageCarsMenu objManageCarsMenu = new ManageCarsMenu();
+                    this.Visibility = Visibility.Hidden;
+                    objManageCarsMenu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid user ID or password!");
+                }
+            }
+        }
+
+        // Przenosi do poprzedniego okna (Main Windowsa)
+        private void MainWindow(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = new MainWindow();
+            this.Visibility = Visibility.Hidden;
+            objMainWindow.Show();
+        }
     }
 }

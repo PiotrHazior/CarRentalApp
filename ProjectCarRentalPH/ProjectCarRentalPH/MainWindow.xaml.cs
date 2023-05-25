@@ -25,6 +25,16 @@ namespace ProjectCarRentalPH
             InitializeComponent();
         }
 
+        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        // Przenosi do menu dla pracowników
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
             EmployeeMenu objEmployeeMenu = new EmployeeMenu();
@@ -32,6 +42,7 @@ namespace ProjectCarRentalPH
             objEmployeeMenu.Show();
         }
 
+        // Przenosi do menu dla klientów
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
             CustomerMenu objCustomerMenu = new CustomerMenu();

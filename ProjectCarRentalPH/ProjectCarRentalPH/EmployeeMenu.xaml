@@ -7,7 +7,73 @@
         mc:Ignorable="d"
         Title="EmployeeMenu" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="349,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Height="295" Width="208" FontSize="36"><Run Language="pl-pl" Text="TEST EMPLOYEE"/></TextBlock>
-
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="471,37,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="51" 
+            Width="195" 
+            FontSize="24" 
+            FontWeight="Bold" 
+            FontFamily="Arial Black"><Run 
+                Language="pl-pl" 
+                Text="LOGIN USER"/></TextBlock>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="356,142,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="33" 
+            Width="166" 
+            FontSize="22" 
+            FontWeight="Bold" 
+            FontFamily="Arial Black"><Run Text="ID_"/><Run Language="pl-pl" Text="Employee"/></TextBlock>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="356,234,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="30" 
+            Width="166" 
+            FontSize="22" 
+            FontFamily="Arial Black" 
+            FontWeight="Bold"><Run 
+                Language="pl-pl" 
+                Text="Password"/></TextBlock>
+        <TextBox
+            x:Name="ID_Employee"
+            HorizontalAlignment="Left" 
+            Margin="576,142,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="180" 
+            Height="34" 
+            RenderTransformOrigin="0.186,0.591"/>
+        <PasswordBox 
+            x:Name="Pass2"
+            HorizontalAlignment="Left"
+            Margin="576,234,0,0" 
+            VerticalAlignment="Top"
+            Width="180" 
+            Height="30"/>
+        <Button 
+            Content="SUBMIT" 
+            HorizontalAlignment="Left" 
+            Margin="576,316,0,0" 
+            VerticalAlignment="Top" 
+            Height="34" Width="180" 
+            Click="ManageCarsMenu"/>
+        <Button 
+            Content="&lt;==" 
+            HorizontalAlignment="Left" 
+            Margin="10,10,0,0" 
+            VerticalAlignment="Top" 
+            Height="32" 
+            Width="60" 
+            FontSize="14" 
+            FontWeight="Bold" 
+            FontFamily="Arial Black" 
+            Click="MainWindow"/>
     </Grid>
 </Window>
