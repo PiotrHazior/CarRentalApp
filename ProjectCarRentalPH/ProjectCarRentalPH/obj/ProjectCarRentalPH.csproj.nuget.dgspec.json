@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\Desktop\\PROJEKT SEMESTRALNY\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj": {}
+    "C:\\Users\\piotr\\Desktop\\GITHUB\\ProjektSemestralnyPO\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\Desktop\\PROJEKT SEMESTRALNY\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj": {
+    "C:\\Users\\piotr\\Desktop\\GITHUB\\ProjektSemestralnyPO\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\Desktop\\PROJEKT SEMESTRALNY\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj",
+        "projectUniqueName": "C:\\Users\\piotr\\Desktop\\GITHUB\\ProjektSemestralnyPO\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj",
         "projectName": "ProjectCarRentalPH",
-        "projectPath": "C:\\Users\\piotr\\Desktop\\PROJEKT SEMESTRALNY\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj",
+        "projectPath": "C:\\Users\\piotr\\Desktop\\GITHUB\\ProjektSemestralnyPO\\ProjectCarRentalPH\\ProjectCarRentalPH\\ProjectCarRentalPH.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\Desktop\\PROJEKT SEMESTRALNY\\ProjectCarRentalPH\\ProjectCarRentalPH\\obj\\",
+        "outputPath": "C:\\Users\\piotr\\Desktop\\GITHUB\\ProjektSemestralnyPO\\ProjectCarRentalPH\\ProjectCarRentalPH\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,18 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
