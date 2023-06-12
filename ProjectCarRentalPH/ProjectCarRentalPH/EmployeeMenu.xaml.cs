@@ -24,6 +24,15 @@ namespace ProjectCarRentalPH
             InitializeComponent();
         }
 
+        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
         private void ManageCarsMenu(object sender, RoutedEventArgs e)
         {
             if (Pass2.Password != "" && ID_Employee.Text != "")

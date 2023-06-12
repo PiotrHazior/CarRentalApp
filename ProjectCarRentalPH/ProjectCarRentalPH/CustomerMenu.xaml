@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectCarRentalPH"
         mc:Ignorable="d"
-        Title="CustomerMenu" Height="450" Width="800">
+        Title="CustomerMenu" Height="450" Width="800"
+        MouseDown="Window_MouseDown">
     <Grid>
         <TextBlock 
             HorizontalAlignment="Left" 
@@ -30,11 +31,7 @@
             Width="166" 
             FontSize="22" 
             FontWeight="Bold" 
-            FontFamily="Arial Black">
-            <Run 
-                Language="pl-pl" 
-                Text="ID_Customer"/>
-        </TextBlock>
+            FontFamily="Arial Black"><Run Language="pl-pl" Text="LastName"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
             Margin="356,234,0,0" 
@@ -50,7 +47,7 @@
                 Text="Password"/>
         </TextBlock>
         <TextBox
-            x:Name="ID_Customer"
+            x:Name="LastName"
             HorizontalAlignment="Left" 
             Margin="576,142,0,0" 
             TextWrapping="Wrap" 
@@ -71,8 +68,9 @@
             Margin="576,324,0,0" 
             VerticalAlignment="Top" 
             Height="34" Width="180" 
-            Click="RentalMenu"/>
+            Click="RentalMenu" FontSize="16" FontFamily="Arial Black" FontWeight="Bold"/>
         <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="MainWindow"/>
+        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="76,324,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterMenu"/>
 
     </Grid>
 </Window>

@@ -5,9 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectCarRentalPH"
         mc:Ignorable="d"
-        Title="RentalMenu" Height="450" Width="800">
+        Title="RentalMenu" Height="575" Width="1075"
+        MouseDown="Window_MouseDown">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="363,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="RENTAL"/></TextBlock>
+        <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="CustomerMenu"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="424" FontSize="36" FontWeight="Bold" FontFamily="Arial Black"><Run Text="REN"/><Run Language="pl-pl" Text="T A"/><Run Text=" SPORT"/><Run Language="pl-pl" Text="S"/><Run Text=" CAR"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="26,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="128" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="YOUR ID"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RETURN DATE"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="26,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="164" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RENTAL DATE"/></TextBlock>
+        <TextBox x:Name="ID_SportCar" HorizontalAlignment="Left" Margin="220,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="35" FontSize="20"/>
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="26,405,0,0" VerticalAlignment="Top" Height="37" Width="128" Click="Button_Add3" FontSize="22" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Button Content="DELETE" HorizontalAlignment="Left" Margin="190,405,0,0" VerticalAlignment="Top" Height="37" Width="128" FontSize="22" FontWeight="Bold" FontFamily="Arial Black" Click="Button_Delete3"/>
+        <DatePicker x:Name="RentalDate" HorizontalAlignment="Left" Margin="216,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.422"/>
+                    <TranslateTransform X="-0.067" Y="0.038"/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
+        <DatePicker x:Name="DateOfReturn" HorizontalAlignment="Left" Margin="216,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.422"/>
+                    <TranslateTransform X="-0.067" Y="0.038"/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
+        <DataGrid x:Name="RentalDGV" SelectionChanged="RentalDGV_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="431,87,36,27"/>
+        <TextBox x:Name="PhoneNum" HorizontalAlignment="Left" Margin="220,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="32"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,20 +20,39 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class CustomerMenu : Window
     {
-        public CustomerMenu()
+        private List<Customer> registeredCustomers;
+        public CustomerMenu(List<Customer> registeredCustomers)
         {
             InitializeComponent();
-        }
+            this.registeredCustomers = registeredCustomers;
+            RefreshRegisteredCustomers();
+        }       
 
         // Warunek logowania klienta
         private void RentalMenu(object sender, RoutedEventArgs e)
         {
-            if (Pass.Password != "" && ID_Customer.Text != "")
+            if (Pass.Password != "" && LastName.Text != "")
             {
-                if (Pass.Password == "test" && ID_Customer.Text == "user1")
+                string customerName = LastName.Text.Trim();
+                string password = Pass.Password.Trim();
+
+                bool loginSuccessful = false;
+
+                if (registeredCustomers != null)
+                {
+                    foreach (Customer customer in registeredCustomers)
+                    {
+                        if (customer.LastName == customerName && customer.Password == password)
+                        {
+                            loginSuccessful = true;
+                            break;
+                        }
+                    }
+                }
+                if (loginSuccessful)
                 {
                     MessageBox.Show("Login successful!");
-                    RentalMenu objRentalMenu = new RentalMenu();
+                    RentalMenu objRentalMenu = new RentalMenu(registeredCustomers);
                     this.Visibility = Visibility.Hidden;
                     objRentalMenu.Show();
                 }
@@ -40,7 +60,7 @@ namespace ProjectCarRentalPH
                 {
                     MessageBox.Show("Invalid user ID or password!");
                 }
-            }
+            }           
         }
 
         // Przenosi do poprzedniego okna (Main Windowsa)
@@ -49,6 +69,61 @@ namespace ProjectCarRentalPH
             MainWindow objMainWindow = new MainWindow();
             this.Visibility = Visibility.Hidden;
             objMainWindow.Show();
+        }
+
+        private void RegisterMenu(object sender, RoutedEventArgs e)
+        {
+            RegisterMenu objRegisterMenu = new RegisterMenu();
+            objRegisterMenu.Closed += RegisterMenu_Closed;
+            this.Visibility = Visibility.Hidden;
+            objRegisterMenu.Show();
+        }
+
+        private void RegisterMenu_Closed(object sender, EventArgs e)
+        {
+            RefreshRegisteredCustomers(); // Odświeżenie listy klientów po zamknięciu okna RegisterMenu
+            this.Visibility = Visibility.Visible; // Ponowne wyświetlenie okna CustomerMenu
+        }
+
+        private void RefreshRegisteredCustomers()
+        {
+            try
+            {
+                registeredCustomers = new List<Customer>();
+                registeredCustomers.Clear(); // Wyczyść listę
+
+                using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True"))
+                {
+                    Con.Open();
+                    string query = "SELECT * FROM Customers";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Customer customer = new Customer
+                        {
+                            LastName = reader["LastName"].ToString(),
+                            Password = reader["Password"].ToString(),
+                            Phone = reader["Phone"].ToString()
+                        };
+                        registeredCustomers.Add(customer);
+                    }
+                    Con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }
