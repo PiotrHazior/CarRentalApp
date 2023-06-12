@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ProjectCarRentalPH.RegisterEmployee;
 
 namespace ProjectCarRentalPH
 {
@@ -21,6 +22,7 @@ namespace ProjectCarRentalPH
     public partial class MainWindow : Window
     {
         private List<Customer> registeredCustomers;
+        private List<Employee> registeredEmployees;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace ProjectCarRentalPH
         // Przenosi do menu dla pracowników
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
-            EmployeeMenu objEmployeeMenu = new EmployeeMenu();
+            EmployeeMenu objEmployeeMenu = new EmployeeMenu(registeredEmployees);
             this.Visibility = Visibility.Hidden;
             objEmployeeMenu.Show();
         }

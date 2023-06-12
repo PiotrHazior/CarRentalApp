@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\App.xaml
-6154173066
+7-1892072607
 
-102119572501
+111871376272
 2221674843619
-CustomerMenu.xaml;EmployeeMenu.xaml;MainWindow.xaml;ManageCarsMenu.xaml;RegisterMenu.xaml;RentalMenu.xaml;
+CustomerMenu.xaml;EmployeeMenu.xaml;MainWindow.xaml;ManageCarsMenu.xaml;RegisterEmployee.xaml;RegisterMenu.xaml;RentalMenu.xaml;
 
-True
+False
 

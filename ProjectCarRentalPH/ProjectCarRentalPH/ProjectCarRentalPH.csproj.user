@@ -16,6 +16,9 @@
     <Compile Update="ManageCarsMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="RegisterEmployee.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="RegisterMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ManageCarsMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RegisterEmployee.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegisterMenu.xaml">

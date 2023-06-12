@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using static ProjectCarRentalPH.RegisterEmployee;
 
 namespace ProjectCarRentalPH
 {
@@ -23,6 +24,7 @@ namespace ProjectCarRentalPH
     public partial class ManageCarsMenu : Window
     {
         public List<string> Brands {  get; set; }
+        private List<Employee> registeredEmployees;
 
         // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -32,10 +34,11 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
-        public ManageCarsMenu()
+        public ManageCarsMenu(List<Employee> registeredEmployees)
         {
             InitializeComponent();
             populate();
+            this.registeredEmployees = registeredEmployees;
         }
 
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
@@ -43,7 +46,7 @@ namespace ProjectCarRentalPH
         // Przenosi do poprzedniego okna (Employee Menu)
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
-            EmployeeMenu objEmployeeMenu = new EmployeeMenu();
+            EmployeeMenu objEmployeeMenu = new EmployeeMenu(registeredEmployees);
             this.Visibility = Visibility.Hidden;
             objEmployeeMenu.Show();
         }
@@ -132,6 +135,14 @@ namespace ProjectCarRentalPH
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void INFOM(object sender, RoutedEventArgs e)
+        {
+            string message = "Aby dodać auto do systemu należy podać Brand, Model, Price oraz kliknąć w przycisk ADD.\n"
+                             + "Natomiast aby usunąć auto z systemu należy podać tylko ID tego samochodu i kliknąć w przycisk DELETE.";
+
+            MessageBox.Show(message, "Informacja");
         }
     }
 }

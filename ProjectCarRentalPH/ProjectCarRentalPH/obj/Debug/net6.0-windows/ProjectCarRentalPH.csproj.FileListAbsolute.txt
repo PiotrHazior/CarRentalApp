@@ -73,3 +73,5 @@ C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCar
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\ManageCarsMenu.baml
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RegisterMenu.g.cs
 C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RegisterMenu.baml
+C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RegisterEmployee.g.cs
+C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\obj\Debug\net6.0-windows\RegisterEmployee.baml

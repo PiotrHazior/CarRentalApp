@@ -29,7 +29,7 @@
             Width="166" 
             FontSize="22" 
             FontWeight="Bold" 
-            FontFamily="Arial Black"><Run Text="ID_"/><Run Language="pl-pl" Text="Employee"/></TextBlock>
+            FontFamily="Arial Black"><Run Language="pl-pl" Text="Last Name"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
             Margin="356,234,0,0" 
@@ -43,7 +43,7 @@
                 Language="pl-pl" 
                 Text="Password"/></TextBlock>
         <TextBox
-            x:Name="ID_Employee"
+            x:Name="LastNameEmpl"
             HorizontalAlignment="Left" 
             Margin="576,142,0,0" 
             TextWrapping="Wrap" 
@@ -76,5 +76,6 @@
             FontWeight="Bold" 
             FontFamily="Arial Black" 
             Click="MainWindow"/>
+        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="76,324,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterEmployee"/>
     </Grid>
 </Window>

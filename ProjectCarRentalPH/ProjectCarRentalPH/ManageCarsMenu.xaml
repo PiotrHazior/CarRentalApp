@@ -12,13 +12,13 @@
         <TextBlock HorizontalAlignment="Center" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="588" FontSize="36" FontWeight="Bold" FontFamily="Arial Black"><Run Text="SPORT CAR RENTAL SYS"/><Run Language="pl-pl" Text="TEM"/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Margin="0,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="184" FontSize="24" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="MANAGE CAR"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="40,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="130" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Text="ID"/><Run Language="pl-pl" Text=" "/><Run Text="CAR"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="40,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="102" FontSize="20" FontFamily="Arial Black" FontWeight="Bold"><Run Language="pl-pl" Text="BRAND"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="40,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="102" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="MODEL"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="40,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="102" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="PRICE"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="40,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="102" FontSize="20" FontFamily="Arial Black" FontWeight="Bold"><Run Language="pl-pl" Text="BRAND"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="40,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="102" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="MODEL"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="40,417,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="102" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="PRICE"/></TextBlock>
         <TextBox x:Name="ID_SportCar" HorizontalAlignment="Left" Margin="147,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
-        <TextBox x:Name="Brand" HorizontalAlignment="Left" Margin="147,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="54" TextChanged="TextBox_TextChanged" FontSize="20"/>
-        <TextBox x:Name="Model" HorizontalAlignment="Left" Margin="147,392,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
-        <TextBox x:Name="Price" HorizontalAlignment="Left" Margin="147,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
+        <TextBox x:Name="Brand" HorizontalAlignment="Left" Margin="147,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="54" TextChanged="TextBox_TextChanged" FontSize="20"/>
+        <TextBox x:Name="Model" HorizontalAlignment="Left" Margin="147,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
+        <TextBox x:Name="Price" HorizontalAlignment="Left" Margin="147,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
         <DataGrid 
             x:Name="datagrid" 
             HorizontalAlignment="Left" 
@@ -29,10 +29,9 @@
 
 
         </DataGrid>
-        <Button Content="ADD" HorizontalAlignment="Left" Margin="40,576,0,0" VerticalAlignment="Top" Height="42" Width="130" Click="Button_Add" FontSize="22" FontWeight="Bold" FontFamily="Arial Black"/>
-        <Button Content="DELETE" HorizontalAlignment="Left" Margin="206,576,0,0" VerticalAlignment="Top" Height="42" Width="130" FontSize="22" FontWeight="Bold" FontFamily="Arial Black" Click="Button_Delete"/>
-        <TextBlock HorizontalAlignment="Left" Margin="40,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="130" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="CAR REG"/></TextBlock>
-        <TextBox x:Name="CarReg" HorizontalAlignment="Left" Margin="147,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="55" TextChanged="TextBox_TextChanged" FontSize="20"/>
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="62,517,0,0" VerticalAlignment="Top" Height="42" Width="130" Click="Button_Add" FontSize="22" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Button Content="DELETE" HorizontalAlignment="Left" Margin="228,517,0,0" VerticalAlignment="Top" Height="42" Width="130" FontSize="22" FontWeight="Bold" FontFamily="Arial Black" Click="Button_Delete"/>
+        <Button Content="INFO" HorizontalAlignment="Left" Margin="884,85,0,0" VerticalAlignment="Top" Height="35" Width="88" Click="INFOM" FontSize="18" FontFamily="Arial Black" FontWeight="Bold"/>
 
     </Grid>
 </Window>
