@@ -24,26 +24,34 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class RegisterMenu : Window
     {
+        #region Pola
         private List<Customer> registeredCustomers;
         private int loggedInCustomerId;
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
+        #endregion
 
+        #region Konstruktor
         public RegisterMenu()
         {
             InitializeComponent();
             registeredCustomers = new List<Customer>();
         }
+        #endregion
 
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
-
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Przenosi do poprzedniego okna CustomerMenu
+        /// </summary>
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
-
             CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
-            objCustomerMenu.Show();
-            
+            objCustomerMenu.Show();           
         }
 
+        /// <summary>
+        /// Pobiera dane z tabeli Customers
+        /// </summary>
         private void populate()
         {
             Con.Open();
@@ -56,6 +64,9 @@ namespace ProjectCarRentalPH
             Con.Close();
         }
 
+        /// <summary>
+        /// Rejestracja klienta
+        /// </summary>
         private void Button_Confirm(object sender, RoutedEventArgs e)
         {
             if (LastName.Text == "" || Phone.Text == "" || Pass2.Password == "")
@@ -92,11 +103,12 @@ namespace ProjectCarRentalPH
             }
         }
 
+        /// <summary>
+        /// Wczytuje dane do listy
+        /// </summary>
         private void Customers_Load(object sender, EventArgs e)
         {
             populate();
-
-            // Wczytaj dane z bazy do listy registeredCustomers
             try
             {
                 Con.Open();
@@ -122,12 +134,11 @@ namespace ProjectCarRentalPH
         }
 
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
 
-        }
-
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -135,6 +146,7 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
+        #endregion
     }
     public class Customer
     {

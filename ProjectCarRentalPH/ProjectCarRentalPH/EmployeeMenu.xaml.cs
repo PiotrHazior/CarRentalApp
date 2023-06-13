@@ -16,20 +16,25 @@ using static ProjectCarRentalPH.RegisterEmployee;
 
 namespace ProjectCarRentalPH
 {
-    /// <summary>
-    /// Interaction logic for EmployeeMenu.xaml
-    /// </summary>
     public partial class EmployeeMenu : Window
     {
+        #region Pole
         private List<Employee> registeredEmployees;
+        #endregion
+
+        #region Konstruktor
         public EmployeeMenu(List<Employee> registeredEmployees)
         {
             InitializeComponent();
             this.registeredEmployees = registeredEmployees;
             RefreshRegisteredEmployees();
         }
+        #endregion
 
-        // Warunek logowania klienta
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Warunek logowania klienta
+        /// </summary>
         private void OpenManageCarsMenu(object sender, RoutedEventArgs e)
         {
             if (Pass2.Password != "" && LastNameEmpl.Text != "")
@@ -63,27 +68,10 @@ namespace ProjectCarRentalPH
                 }
             }
         }
-  
-        //private void ManageCarsMenu(object sender, RoutedEventArgs e)
-        //{
-        //    if (Pass2.Password != "" && LastNameEmpl.Text != "")
-        //    {
-        //        if (Pass2.Password == "test" && LastNameEmpl.Text == "user1")
-        //        {
-        //            MessageBox.Show("Login successful!");
-        //            ManageCarsMenu objManageCarsMenu = new ManageCarsMenu();
-        //            this.Visibility = Visibility.Hidden;
-        //            objManageCarsMenu.Show();
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Invalid user ID or password!");
-        //        }
-        //    }
-        //}
 
-
-        // Przenosi do poprzedniego okna (Main Windowsa)
+        /// <summary>
+        /// Przenosi do poprzedniego okna (Main Windowsa)
+        /// </summary>
         private void MainWindow(object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = new MainWindow();
@@ -91,6 +79,9 @@ namespace ProjectCarRentalPH
             objMainWindow.Show();
         }
 
+        /// <summary>
+        /// Przenosi do okna RegisterEmployee
+        /// </summary>
         private void RegisterEmployee(object sender, RoutedEventArgs e)
         {
             RegisterEmployee objRegisterEmployee = new RegisterEmployee();
@@ -101,16 +92,19 @@ namespace ProjectCarRentalPH
 
         private void RegisterEmployee_Closed(object sender, EventArgs e)
         {
-            RefreshRegisteredEmployees(); // Odświeżenie listy klientów po zamknięciu okna RegisterMenu
-            this.Visibility = Visibility.Visible; // Ponowne wyświetlenie okna CustomerMenu
+            RefreshRegisteredEmployees(); 
+            this.Visibility = Visibility.Visible; 
         }
 
+        /// <summary>
+        /// Odświeża listę pracowników
+        /// </summary>
         private void RefreshRegisteredEmployees()
         {
             try
             {
                 registeredEmployees = new List<Employee>();
-                registeredEmployees.Clear(); // Wyczyść listę
+                registeredEmployees.Clear(); 
 
                 using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True"))
                 {
@@ -124,7 +118,6 @@ namespace ProjectCarRentalPH
                         {
                             LastName = reader["LastName"].ToString(),
                             Password = reader["Password"].ToString(),
-                           // PhoneNumb = reader["PhoneNumb"].ToString()
                         };
                         registeredEmployees.Add(employee);
                     }
@@ -143,7 +136,9 @@ namespace ProjectCarRentalPH
         }
 
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -151,6 +146,6 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
-
+        #endregion
     }
 }

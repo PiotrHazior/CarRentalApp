@@ -21,15 +21,23 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Pola
         private List<Customer> registeredCustomers;
         private List<Employee> registeredEmployees;
         private int loggedInCustomerId;
+        #endregion
+
+        #region Konstruktor
         public MainWindow()
         {
             InitializeComponent();
         }
+        #endregion
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -38,7 +46,9 @@ namespace ProjectCarRentalPH
             }
         }
 
-        // Przenosi do menu dla pracowników
+        /// <summary>
+        /// Przenosi do menu dla pracowników
+        /// </summary>
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
             EmployeeMenu objEmployeeMenu = new EmployeeMenu(registeredEmployees);
@@ -46,12 +56,15 @@ namespace ProjectCarRentalPH
             objEmployeeMenu.Show();
         }
 
-        // Przenosi do menu dla klientów
+        /// <summary>
+        /// Przenosi do menu dla klientów
+        /// </summary>
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
             CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
             objCustomerMenu.Show();
         }
+        #endregion
     }
 }

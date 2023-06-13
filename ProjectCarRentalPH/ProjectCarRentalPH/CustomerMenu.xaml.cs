@@ -20,7 +20,12 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class CustomerMenu : Window
     {
+        #region Pola
         private List<Customer> registeredCustomers;
+        private int loggedInCustomerId;
+        #endregion
+
+        #region Konstruktor
         public CustomerMenu(List<Customer> registeredCustomers, int loggedInCustomerId)
         {
             InitializeComponent();
@@ -28,10 +33,12 @@ namespace ProjectCarRentalPH
             this.loggedInCustomerId = loggedInCustomerId;
             RefreshRegisteredCustomers();
         }
+        #endregion
 
-        private int loggedInCustomerId; // Przechowuje ID zalogowanego klienta
-
-        // Warunek logowania klienta
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Logowanie klienta
+        /// </summary>
         private void RentalMenu(object sender, RoutedEventArgs e)
         {
             if (Pass.Password != "" && LastName.Text != "")
@@ -74,7 +81,9 @@ namespace ProjectCarRentalPH
         }
 
 
-        // Przenosi do poprzedniego okna (Main Windowsa)
+        /// <summary>
+        /// Przenosi do poprzedniego okna (Main Windowsa)
+        /// </summary>
         private void MainWindow(object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = new MainWindow();
@@ -82,6 +91,9 @@ namespace ProjectCarRentalPH
             objMainWindow.Show();
         }
 
+        /// <summary>
+        /// Przenosi do okna RegisterMenu
+        /// </summary>
         private void RegisterMenu(object sender, RoutedEventArgs e)
         {
             RegisterMenu objRegisterMenu = new RegisterMenu();
@@ -92,16 +104,19 @@ namespace ProjectCarRentalPH
 
         private void RegisterMenu_Closed(object sender, EventArgs e)
         {
-            RefreshRegisteredCustomers(); // Odświeżenie listy klientów po zamknięciu okna RegisterMenu
-            this.Visibility = Visibility.Visible; // Ponowne wyświetlenie okna CustomerMenu
+            RefreshRegisteredCustomers(); 
+            this.Visibility = Visibility.Visible; 
         }
 
+        /// <summary>
+        /// Odświeża listę klientów
+        /// </summary>
         private void RefreshRegisteredCustomers()
         {
             try
             {
                 registeredCustomers = new List<Customer>();
-                registeredCustomers.Clear(); // Wyczyść listę
+                registeredCustomers.Clear(); 
 
                 using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True"))
                 {
@@ -129,7 +144,9 @@ namespace ProjectCarRentalPH
             }
         }
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -137,5 +154,6 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
+        #endregion
     }
 }

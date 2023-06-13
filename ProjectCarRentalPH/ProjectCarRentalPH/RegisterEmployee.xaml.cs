@@ -16,20 +16,25 @@ using System.Windows.Shapes;
 
 namespace ProjectCarRentalPH
 {
-    /// <summary>
-    /// Interaction logic for RegisterEmployee.xaml
-    /// </summary>
     public partial class RegisterEmployee : Window
     {
+        #region Pola
         private List<Employee> registeredEmployees;
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
+        #endregion
+
+        #region Konstruktor
         public RegisterEmployee()
         {
             InitializeComponent();
             registeredEmployees = new List<Employee>();
         }
+        #endregion
 
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
-
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Przenosi do okna EmployeeMenu
+        /// </summary>
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
             EmployeeMenu objEmployeeMenu = new EmployeeMenu(registeredEmployees);
@@ -37,6 +42,9 @@ namespace ProjectCarRentalPH
             objEmployeeMenu.Show();
         }
 
+        /// <summary>
+        /// Pobiera dane z tabeli Employees
+        /// </summary>
         private void populate2()
         {
             Con.Open();
@@ -49,6 +57,9 @@ namespace ProjectCarRentalPH
             Con.Close();
         }
 
+        /// <summary>
+        /// Rejestracja pracownika
+        /// </summary>
         private void Button_Confirm2(object sender, RoutedEventArgs e)
         {
             if (LastName2.Text == "" || Phone2.Text == "" || Pass3.Password == "")
@@ -84,11 +95,12 @@ namespace ProjectCarRentalPH
             }
         }
 
+        /// <summary>
+        /// Wczytuje dane do listy
+        /// </summary>
         private void Employees_Load(object sender, EventArgs e)
         {
             populate2();
-
-            // Wczytaj dane z bazy do listy registeredCustomers
             try
             {
                 Con.Open();
@@ -113,7 +125,9 @@ namespace ProjectCarRentalPH
             }
         }
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -122,16 +136,17 @@ namespace ProjectCarRentalPH
             }
         }
 
+        private void EmployeeDGV_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
+        #endregion
+
+        #region Klasy pomocnicze
         public class Employee
         {
             public string LastName { get; set; }
             public string Password { get; set; }
             public string PhoneNumb { get; set; }
         }
-
-        private void EmployeeDGV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        #endregion
+     
     }
 }

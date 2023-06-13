@@ -23,10 +23,25 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class ManageCarsMenu : Window
     {
+        #region Pola
         public List<string> Brands {  get; set; }
         private List<Employee> registeredEmployees;
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
+        #endregion
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        #region Konstruktor
+        public ManageCarsMenu(List<Employee> registeredEmployees)
+        {
+            InitializeComponent();
+            populate();
+            this.registeredEmployees = registeredEmployees;
+        }
+        #endregion
+
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -34,16 +49,12 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
-        public ManageCarsMenu(List<Employee> registeredEmployees)
-        {
-            InitializeComponent();
-            populate();
-            this.registeredEmployees = registeredEmployees;
-        }
+        
 
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
 
-        // Przenosi do poprzedniego okna (Employee Menu)
+        /// <summary>
+        /// Przenosi do poprzedniego okna (Employee Menu)
+        /// </summary>
         private void EmployeeMenu(object sender, RoutedEventArgs e)
         {
             EmployeeMenu objEmployeeMenu = new EmployeeMenu(registeredEmployees);
@@ -51,8 +62,9 @@ namespace ProjectCarRentalPH
             objEmployeeMenu.Show();
         }
 
-
-
+        /// <summary>
+        /// Pobiera dane z tabeli SportCars
+        /// </summary>
         private void populate()
         {
             Con.Open();
@@ -69,17 +81,13 @@ namespace ProjectCarRentalPH
         }
 
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) { } 
 
-        }  
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) { }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        // Dodaje dane do bazy danych
+        /// <summary>
+        /// Dodaje dane do bazy danych
+        /// </summary>
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             if (Brand.Text == "" || Model.Text == "" || Price.Text == "")
@@ -112,6 +120,9 @@ namespace ProjectCarRentalPH
 
         }
 
+        /// <summary>
+        /// Usuwa dane z bazy danych
+        /// </summary>
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
             if (ID_SportCar.Text == "")
@@ -137,6 +148,9 @@ namespace ProjectCarRentalPH
             }
         }
 
+        /// <summary>
+        /// Przycisk INFO - pomaga użytkownikowi
+        /// </summary>
         private void INFOM(object sender, RoutedEventArgs e)
         {
             string message = "Aby dodać auto do systemu należy podać Brand, Model, Price oraz kliknąć w przycisk ADD.\n"
@@ -144,5 +158,6 @@ namespace ProjectCarRentalPH
 
             MessageBox.Show(message, "Informacja");
         }
+        #endregion
     }
 }

@@ -23,49 +23,54 @@ namespace ProjectCarRentalPH
     /// </summary>
     public partial class RentalMenu : Window
     {
+        #region Pola
         private List<Customer> registeredCustomers;
-        private DataRowView selectedRow;
-        //private string phoneNumber;
+        private DataRowView selectedRow;  
         private int loggedInCustomerId;
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
+        #endregion
+
+        #region Konstruktor
         public RentalMenu(List<Customer> registeredCustomers, int loggedInCustomerId)
         {
             InitializeComponent();
             this.registeredCustomers = registeredCustomers;
             this.loggedInCustomerId = loggedInCustomerId;
-            //phoneNumber = GetCustomerPhoneNumber();
             LoadDataGrid();
         }
+        #endregion
 
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
-
-
-        // Przenosi do poprzedniego okna (Customer Menu)
+        #region Obsługa zdarzeń
+        /// <summary>
+        /// Przenosi do poprzedniego okna (Customer Menu)
+        /// </summary>
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
             CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
             objCustomerMenu.Show();
         }
+
         private void LoadDataGrid()
         {
             try
             {
                 Con.Open();
 
-                // Pobierz wszystkie samochody dostępne do wynajęcia
+                // Pobiera wszystkie samochody dostępne do wynajęcia
                 string availableCarsQuery = "SELECT * FROM SportCars";
                 SqlDataAdapter availableCarsAdapter = new SqlDataAdapter(availableCarsQuery, Con);
                 DataTable availableCarsDt = new DataTable();
                 availableCarsAdapter.Fill(availableCarsDt);
 
-                // Pobierz rezerwacje danego klienta
+                // Pobiera rezerwacje danego klienta
                 string customerRentalsQuery = "SELECT * FROM RentalCar WHERE ID_Customer = @CustomerId";
                 SqlDataAdapter customerRentalsAdapter = new SqlDataAdapter(customerRentalsQuery, Con);
                 customerRentalsAdapter.SelectCommand.Parameters.AddWithValue("@CustomerId", loggedInCustomerId);
                 DataTable customerRentalsDt = new DataTable();
                 customerRentalsAdapter.Fill(customerRentalsDt);
 
-                // Wyświetl dostępne samochody i rezerwacje klienta w odpowiednich DataGrids
+                // Wyświetla dostępne samochody i rezerwacje klienta w odpowiednich DataGrids
                 RentalDGV.ItemsSource = availableCarsDt.DefaultView;
                 YourRental.ItemsSource = customerRentalsDt.DefaultView;
             }
@@ -79,7 +84,9 @@ namespace ProjectCarRentalPH
             }
         }
 
-
+        /// <summary>
+        /// Wynajem auta
+        /// </summary>
         private void Button_Add3(object sender, RoutedEventArgs e)
         {
             if (selectedRow == null || RentalDate.SelectedDate == null || DateOfReturn.SelectedDate == null)
@@ -134,14 +141,14 @@ namespace ProjectCarRentalPH
             {
                 Con.Open();
 
-                // Pobierz rezerwacje danego klienta
+                // Pobiera rezerwacje danego klienta
                 string customerRentalsQuery = "SELECT * FROM RentalCar WHERE ID_Customer = @CustomerId";
                 SqlDataAdapter customerRentalsAdapter = new SqlDataAdapter(customerRentalsQuery, Con);
                 customerRentalsAdapter.SelectCommand.Parameters.AddWithValue("@CustomerId", loggedInCustomerId);
                 DataTable customerRentalsDt = new DataTable();
                 customerRentalsAdapter.Fill(customerRentalsDt);
 
-                // Wyświetl rezerwacje klienta w DataGrid
+                // Wyświetla rezerwacje klienta w DataGrid
                 YourRental.ItemsSource = customerRentalsDt.DefaultView;
             }
             catch (Exception ex)
@@ -160,15 +167,14 @@ namespace ProjectCarRentalPH
             Con.Close();
         }
 
-
-
         private void Car_Load(object sender, RoutedEventArgs e)
         {
             LoadDataGrid();
-            //carsRent();
         }   
 
-        // Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// <summary>
+        /// Umożliwia przesuwanie konsoli poprzez nacisnięcie lewego przycisku myszki
+        /// </summary>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -176,6 +182,10 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
+
+        /// <summary>
+        /// Anulowanie wynajmu auta
+        /// </summary>
 
         private void Button_Delete3(object sender, RoutedEventArgs e)
         {
@@ -222,10 +232,6 @@ namespace ProjectCarRentalPH
             }
         }
 
-
-
-        //private DataRowView selectedRow; // Dodaj pole do przechowywania wybranego wiersza
-
         private void RentalDGV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (RentalDGV.SelectedItem != null)
@@ -234,9 +240,7 @@ namespace ProjectCarRentalPH
             }
         }
 
-        private void YourRental_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        private void YourRental_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
+        #endregion
     }
 }

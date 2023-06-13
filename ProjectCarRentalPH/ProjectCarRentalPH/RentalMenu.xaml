@@ -36,8 +36,8 @@
                 </TransformGroup>
             </DatePicker.RenderTransform>
         </DatePicker>
-        <DataGrid x:Name="RentalDGV" SelectionChanged="RentalDGV_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="431,113,366,27"/>
-        <DataGrid x:Name="YourRental" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="714,113,56,27" SelectionChanged="YourRental_SelectionChanged"/>
+        <DataGrid x:Name="RentalDGV" SelectionChanged="RentalDGV_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="410,113,369,27"/>
+        <DataGrid x:Name="YourRental" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="711,113,56,27" SelectionChanged="YourRental_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="449,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="242" FontSize="15" FontFamily="Arial Black" FontWeight="Bold"><Run Language="pl-pl" Text="RENTAL SPORT CARS LIST"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="721,74,0,0" TextWrapping="Wrap" Text="LIST OF YOUR RENT SPORTS CARS" VerticalAlignment="Top" FontFamily="Arial Black" FontWeight="Bold" FontSize="15"/>
 
