@@ -23,6 +23,7 @@ namespace ProjectCarRentalPH
     {
         private List<Customer> registeredCustomers;
         private List<Employee> registeredEmployees;
+        private int loggedInCustomerId;
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace ProjectCarRentalPH
         // Przenosi do menu dla klientów
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
-            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers);
+            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
             objCustomerMenu.Show();
         }

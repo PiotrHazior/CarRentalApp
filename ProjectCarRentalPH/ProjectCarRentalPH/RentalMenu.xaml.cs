@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace ProjectCarRentalPH
 {
@@ -25,14 +25,15 @@ namespace ProjectCarRentalPH
     {
         private List<Customer> registeredCustomers;
         private DataRowView selectedRow;
-
-        public RentalMenu(List<Customer> registeredCustomers)
+        //private string phoneNumber;
+        private int loggedInCustomerId;
+        public RentalMenu(List<Customer> registeredCustomers, int loggedInCustomerId)
         {
             InitializeComponent();
             this.registeredCustomers = registeredCustomers;
+            this.loggedInCustomerId = loggedInCustomerId;
+            //phoneNumber = GetCustomerPhoneNumber();
             LoadDataGrid();
-            //carsRent();
-            //UpdateBrandComboBox();
         }
 
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True");
@@ -41,7 +42,7 @@ namespace ProjectCarRentalPH
         // Przenosi do poprzedniego okna (Customer Menu)
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
-            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers);
+            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
             objCustomerMenu.Show();
         }
@@ -50,11 +51,23 @@ namespace ProjectCarRentalPH
             try
             {
                 Con.Open();
-                string query = "SELECT * FROM SportCars";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, Con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                RentalDGV.ItemsSource = dt.DefaultView;
+
+                // Pobierz wszystkie samochody dostępne do wynajęcia
+                string availableCarsQuery = "SELECT * FROM SportCars";
+                SqlDataAdapter availableCarsAdapter = new SqlDataAdapter(availableCarsQuery, Con);
+                DataTable availableCarsDt = new DataTable();
+                availableCarsAdapter.Fill(availableCarsDt);
+
+                // Pobierz rezerwacje danego klienta
+                string customerRentalsQuery = "SELECT * FROM RentalCar WHERE ID_Customer = @CustomerId";
+                SqlDataAdapter customerRentalsAdapter = new SqlDataAdapter(customerRentalsQuery, Con);
+                customerRentalsAdapter.SelectCommand.Parameters.AddWithValue("@CustomerId", loggedInCustomerId);
+                DataTable customerRentalsDt = new DataTable();
+                customerRentalsAdapter.Fill(customerRentalsDt);
+
+                // Wyświetl dostępne samochody i rezerwacje klienta w odpowiednich DataGrids
+                RentalDGV.ItemsSource = availableCarsDt.DefaultView;
+                YourRental.ItemsSource = customerRentalsDt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -65,6 +78,7 @@ namespace ProjectCarRentalPH
                 Con.Close();
             }
         }
+
 
         private void Button_Add3(object sender, RoutedEventArgs e)
         {
@@ -82,50 +96,63 @@ namespace ProjectCarRentalPH
                         con.Open();
 
                         int sportCarId = Convert.ToInt32(selectedRow["ID_SportCar"]);
-                        int customerId = GetCustomerId(con);
+                        int customerId = loggedInCustomerId;
 
-                        using (SqlCommand cmdInsert = new SqlCommand(query, con))
+                        if (customerId != 0)
                         {
-                            cmdInsert.Parameters.AddWithValue("@RentalDate", RentalDate.SelectedDate.Value);
-                            cmdInsert.Parameters.AddWithValue("@DateOfReturn", DateOfReturn.SelectedDate.Value);
-                            cmdInsert.Parameters.AddWithValue("@ID_Customer", customerId);
-                            cmdInsert.Parameters.AddWithValue("@ID_SportCar", sportCarId);
+                            using (SqlCommand cmdInsert = new SqlCommand(query, con))
+                            {
+                                cmdInsert.Parameters.AddWithValue("@RentalDate", RentalDate.SelectedDate.Value);
+                                cmdInsert.Parameters.AddWithValue("@DateOfReturn", DateOfReturn.SelectedDate.Value);
+                                cmdInsert.Parameters.AddWithValue("@ID_Customer", customerId);
+                                cmdInsert.Parameters.AddWithValue("@ID_SportCar", sportCarId);
 
-                            cmdInsert.ExecuteNonQuery();
-                            MessageBox.Show("Car rented. Have a nice ride :) ");
+                                cmdInsert.ExecuteNonQuery();
+                                MessageBox.Show("Car rented. Have a nice ride :) ");
+
+                                // Odśwież DataGrid z rezerwacjami klienta
+                                RefreshCustomerRentalsDataGrid();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to insert customer record. Please try again.");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error: " + ex.Message);
+                    //MessageBox.Show(ex.Message);
                 }
             }
-
         }
 
-
-
-        private int GetCustomerId(SqlConnection con)
+        private void RefreshCustomerRentalsDataGrid()
         {
-            int customerId = 0;
-
             try
             {
-                string query = "INSERT INTO Customers DEFAULT VALUES; SELECT SCOPE_IDENTITY();";
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    customerId = Convert.ToInt32(cmd.ExecuteScalar());
-                }
+                Con.Open();
+
+                // Pobierz rezerwacje danego klienta
+                string customerRentalsQuery = "SELECT * FROM RentalCar WHERE ID_Customer = @CustomerId";
+                SqlDataAdapter customerRentalsAdapter = new SqlDataAdapter(customerRentalsQuery, Con);
+                customerRentalsAdapter.SelectCommand.Parameters.AddWithValue("@CustomerId", loggedInCustomerId);
+                DataTable customerRentalsDt = new DataTable();
+                customerRentalsAdapter.Fill(customerRentalsDt);
+
+                // Wyświetl rezerwacje klienta w DataGrid
+                YourRental.ItemsSource = customerRentalsDt.DefaultView;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            return customerId;
+            finally
+            {
+                Con.Close();
+            }
         }
-
 
 
         private void Window_Closed(object sender, EventArgs e)
@@ -152,7 +179,47 @@ namespace ProjectCarRentalPH
 
         private void Button_Delete3(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(ID_SportCar.Text))
+            {
+                MessageBox.Show("Please enter the SportCar ID to delete.");
+                return;
+            }
 
+            int sportCarId;
+            if (!int.TryParse(ID_SportCar.Text, out sportCarId))
+            {
+                MessageBox.Show("Invalid SportCar ID. Please enter a valid ID.");
+                return;
+            }
+
+            try
+            {
+                string query = "DELETE FROM RentalCar WHERE ID_SportCar = @SportCarId AND ID_Customer = @CustomerId";
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True"))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmdDelete = new SqlCommand(query, con))
+                    {
+                        cmdDelete.Parameters.AddWithValue("@SportCarId", sportCarId);
+                        cmdDelete.Parameters.AddWithValue("@CustomerId", loggedInCustomerId);
+                        int rowsAffected = cmdDelete.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Car rental deleted successfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete car rental. Please make sure you are deleting your own rental.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
 
@@ -167,6 +234,9 @@ namespace ProjectCarRentalPH
             }
         }
 
+        private void YourRental_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }

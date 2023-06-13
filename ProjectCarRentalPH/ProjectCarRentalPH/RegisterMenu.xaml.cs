@@ -25,6 +25,8 @@ namespace ProjectCarRentalPH
     public partial class RegisterMenu : Window
     {
         private List<Customer> registeredCustomers;
+        private int loggedInCustomerId;
+
         public RegisterMenu()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace ProjectCarRentalPH
         private void CustomerMenu(object sender, RoutedEventArgs e)
         {
 
-            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers);
+            CustomerMenu objCustomerMenu = new CustomerMenu(registeredCustomers, loggedInCustomerId);
             this.Visibility = Visibility.Hidden;
             objCustomerMenu.Show();
             
@@ -139,5 +141,6 @@ namespace ProjectCarRentalPH
         public string LastName { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
+        public int ID { get; internal set; }
     }
 }

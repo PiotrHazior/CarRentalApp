@@ -10,13 +10,13 @@
     <Grid>
         <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="CustomerMenu"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="424" FontSize="36" FontWeight="Bold" FontFamily="Arial Black"><Run Text="REN"/><Run Language="pl-pl" Text="T A"/><Run Text=" SPORT"/><Run Language="pl-pl" Text="S"/><Run Text=" CAR"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="26,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="128" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="YOUR ID"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RETURN DATE"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="26,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="164" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RENTAL DATE"/></TextBlock>
-        <TextBox x:Name="ID_SportCar" HorizontalAlignment="Left" Margin="220,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="35" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="128" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="CAR ID"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="17,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RETURN DATE"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="164" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="RENTAL DATE"/></TextBlock>
+        <TextBox x:Name="ID_SportCar" HorizontalAlignment="Left" Margin="207,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="34" FontSize="20"/>
         <Button Content="ADD" HorizontalAlignment="Left" Margin="26,405,0,0" VerticalAlignment="Top" Height="37" Width="128" Click="Button_Add3" FontSize="22" FontWeight="Bold" FontFamily="Arial Black"/>
         <Button Content="DELETE" HorizontalAlignment="Left" Margin="190,405,0,0" VerticalAlignment="Top" Height="37" Width="128" FontSize="22" FontWeight="Bold" FontFamily="Arial Black" Click="Button_Delete3"/>
-        <DatePicker x:Name="RentalDate" HorizontalAlignment="Left" Margin="216,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
+        <DatePicker x:Name="RentalDate" HorizontalAlignment="Left" Margin="207,223,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
             <DatePicker.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,7 +26,7 @@
                 </TransformGroup>
             </DatePicker.RenderTransform>
         </DatePicker>
-        <DatePicker x:Name="DateOfReturn" HorizontalAlignment="Left" Margin="216,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
+        <DatePicker x:Name="DateOfReturn" HorizontalAlignment="Left" Margin="208,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.151" Width="171" FontFamily="Arial Black" FontSize="18" Height="29">
             <DatePicker.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -36,8 +36,10 @@
                 </TransformGroup>
             </DatePicker.RenderTransform>
         </DatePicker>
-        <DataGrid x:Name="RentalDGV" SelectionChanged="RentalDGV_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="431,87,36,27"/>
-        <TextBox x:Name="PhoneNum" HorizontalAlignment="Left" Margin="220,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="32"/>
+        <DataGrid x:Name="RentalDGV" SelectionChanged="RentalDGV_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="431,113,366,27"/>
+        <DataGrid x:Name="YourRental" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="714,113,56,27" SelectionChanged="YourRental_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="449,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="242" FontSize="15" FontFamily="Arial Black" FontWeight="Bold"><Run Language="pl-pl" Text="RENTAL SPORT CARS LIST"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="721,74,0,0" TextWrapping="Wrap" Text="LIST OF YOUR RENT SPORTS CARS" VerticalAlignment="Top" FontFamily="Arial Black" FontWeight="Bold" FontSize="15"/>
 
     </Grid>
 </Window>

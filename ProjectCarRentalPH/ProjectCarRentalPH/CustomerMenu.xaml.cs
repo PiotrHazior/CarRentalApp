@@ -21,12 +21,15 @@ namespace ProjectCarRentalPH
     public partial class CustomerMenu : Window
     {
         private List<Customer> registeredCustomers;
-        public CustomerMenu(List<Customer> registeredCustomers)
+        public CustomerMenu(List<Customer> registeredCustomers, int loggedInCustomerId)
         {
             InitializeComponent();
             this.registeredCustomers = registeredCustomers;
+            this.loggedInCustomerId = loggedInCustomerId;
             RefreshRegisteredCustomers();
-        }       
+        }
+
+        private int loggedInCustomerId; // Przechowuje ID zalogowanego klienta
 
         // Warunek logowania klienta
         private void RentalMenu(object sender, RoutedEventArgs e)
@@ -40,19 +43,26 @@ namespace ProjectCarRentalPH
 
                 if (registeredCustomers != null)
                 {
-                    foreach (Customer customer in registeredCustomers)
+                    using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\piotr\Desktop\GITHUB\ProjektSemestralnyPO\ProjectCarRentalPH\ProjectCarRentalPH\Database.mdf;Integrated Security=True"))
                     {
-                        if (customer.LastName == customerName && customer.Password == password)
+                        con.Open();
+                        string query = "SELECT * FROM Customers WHERE LastName = @LastName AND Password = @Password";
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        cmd.Parameters.AddWithValue("@LastName", customerName);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
                         {
+                            loggedInCustomerId = Convert.ToInt32(reader["ID_Customer"]);
                             loginSuccessful = true;
-                            break;
                         }
+                        con.Close();
                     }
                 }
                 if (loginSuccessful)
                 {
                     MessageBox.Show("Login successful!");
-                    RentalMenu objRentalMenu = new RentalMenu(registeredCustomers);
+                    RentalMenu objRentalMenu = new RentalMenu(registeredCustomers, loggedInCustomerId);
                     this.Visibility = Visibility.Hidden;
                     objRentalMenu.Show();
                 }
@@ -60,8 +70,9 @@ namespace ProjectCarRentalPH
                 {
                     MessageBox.Show("Invalid user ID or password!");
                 }
-            }           
+            }
         }
+
 
         // Przenosi do poprzedniego okna (Main Windowsa)
         private void MainWindow(object sender, RoutedEventArgs e)
@@ -102,6 +113,7 @@ namespace ProjectCarRentalPH
                     {
                         Customer customer = new Customer
                         {
+                            
                             LastName = reader["LastName"].ToString(),
                             Password = reader["Password"].ToString(),
                             Phone = reader["Phone"].ToString()
