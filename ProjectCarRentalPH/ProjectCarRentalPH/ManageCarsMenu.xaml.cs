@@ -134,9 +134,17 @@ namespace ProjectCarRentalPH
                 try
                 {
                     Con.Open();
-                    string query = "delete from SportCars where ID_SportCar=" + ID_SportCar.Text + ";";
-                    SqlCommand cmd = new SqlCommand(query, Con);
-                    cmd.ExecuteNonQuery();
+
+                    // Usuń powiązane rekordy z tabeli dbo.RentalCar
+                    string deleteRentalCarQuery = "delete from RentalCar where ID_SportCar=" + ID_SportCar.Text + ";";
+                    SqlCommand deleteRentalCarCmd = new SqlCommand(deleteRentalCarQuery, Con);
+                    deleteRentalCarCmd.ExecuteNonQuery();
+
+                    // Usuń rekord z tabeli SportCars
+                    string deleteSportCarQuery = "delete from SportCars where ID_SportCar=" + ID_SportCar.Text + ";";
+                    SqlCommand deleteSportCarCmd = new SqlCommand(deleteSportCarQuery, Con);
+                    deleteSportCarCmd.ExecuteNonQuery();
+
                     MessageBox.Show("Car Model deleted successfully!");
                     Con.Close();
                     populate();
@@ -149,7 +157,7 @@ namespace ProjectCarRentalPH
         }
 
         /// <summary>
-        /// Przycisk INFO - pomaga użytkownikowi
+        /// Przycisk HELP - pomaga użytkownikowi
         /// </summary>
         private void INFOM(object sender, RoutedEventArgs e)
         {

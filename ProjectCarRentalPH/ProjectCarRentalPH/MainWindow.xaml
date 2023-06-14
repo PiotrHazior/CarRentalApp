@@ -6,11 +6,20 @@
         xmlns:local="clr-namespace:ProjectCarRentalPH"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        MouseDown="Window_MouseDown">
-    <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="699" FontSize="36" FontWeight="Bold" FontFamily="Arial Black"><Run Language="pl-pl" Text="SPORT CAR RENTAL APPLICATION"/></TextBlock>
-        <Button Content="CUSTOMER" HorizontalAlignment="Left" Margin="521,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.509,-0.153" Height="73" Width="151" FontWeight="Bold" FontFamily="Arial Black" FontSize="20" Click="CustomerMenu"/>
-        <Button Content="EMPLOYEE" HorizontalAlignment="Left" Margin="122,283,0,0" VerticalAlignment="Top" Height="73" Width="150" FontSize="20" FontWeight="Bold" FontFamily="Arial Black" Click="EmployeeMenu"/>
+        MouseDown="Window_MouseDown"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FFB52929" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Background="#FF131215">
+        <TextBlock HorizontalAlignment="Center" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="699" FontSize="36" FontWeight="Bold" FontFamily="Arial Black" Foreground="#FFE37022"><Run Language="pl-pl" Text="SPORT CAR RENTAL APPLICATION"/></TextBlock>
+        <Button Content="CUSTOMER" HorizontalAlignment="Left" Margin="552,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.509,-0.153" Height="73" Width="152" FontWeight="Bold" FontFamily="Arial Black" FontSize="20" Click="CustomerMenu" Foreground="#FFE3702A" Background="#FF131215" BorderBrush="#FFE3702A"/>
+        <Button Content="EMPLOYEE" HorizontalAlignment="Left" Margin="96,306,0,0" VerticalAlignment="Top" Height="74" Width="150" FontSize="20" FontWeight="Bold" FontFamily="Arial Black" Click="EmployeeMenu" Foreground="#FFE3702A" BorderBrush="#FFE3702A" Background="#FF131215"/>
+        <Image Source="/Image1.png" Margin="96,21,96,106"/>
 
     </Grid>
 </Window>

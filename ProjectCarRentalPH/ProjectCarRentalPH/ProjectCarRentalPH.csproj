@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Auto2.png" />
+    <None Remove="Auto3.png" />
+    <None Remove="Image1.png" />
+    <None Remove="Zrzut ekranu 2023-06-14 081921.png" />
+    <None Remove="Zrzut ekranu 2023-06-14 083412.png" />
+    <None Remove="Zrzut ekranu 2023-06-14 091329.png" />
+    <None Remove="Zrzut ekranu 2023-06-14 095317.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,7 +26,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Icons\" />
+    <Resource Include="Auto2.png" />
+    <Resource Include="Auto3.png" />
+    <Resource Include="Icons\Auto3.png" />
+    <Resource Include="Icons\Zrzut ekranu 2023-06-14 083412.png" />
+    <Resource Include="Icons\Zrzut ekranu 2023-06-14 091329.png" />
+    <Resource Include="Image1.png" />
+    <Resource Include="Zrzut ekranu 2023-06-14 091329.png" />
+    <Resource Include="Zrzut ekranu 2023-06-14 095317.png" />
   </ItemGroup>
 
 </Project>

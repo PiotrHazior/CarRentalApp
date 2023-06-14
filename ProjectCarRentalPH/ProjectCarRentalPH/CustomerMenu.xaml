@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:ProjectCarRentalPH"
         mc:Ignorable="d"
         Title="CustomerMenu" Height="450" Width="800"
-        MouseDown="Window_MouseDown">
-    <Grid>
+        MouseDown="Window_MouseDown"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF131215">
         <TextBlock 
             HorizontalAlignment="Left" 
             Margin="471,37,0,0" 
@@ -17,11 +19,7 @@
             Width="195" 
             FontSize="24" 
             FontWeight="Bold" 
-            FontFamily="Arial Black">
-                <Run 
-                    Language="pl-pl" 
-                    Text="LOGIN USER"/>
-        </TextBlock>
+            FontFamily="Arial Black" Foreground="#FFE37022"><Run Text="LOGIN "/><Run Language="pl-pl" Text="USER"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
             Margin="356,142,0,0" 
@@ -31,7 +29,7 @@
             Width="166" 
             FontSize="22" 
             FontWeight="Bold" 
-            FontFamily="Arial Black"><Run Language="pl-pl" Text="LastName"/></TextBlock>
+            FontFamily="Arial Black" Foreground="#FFE37022"><Run Language="pl-pl" Text="LastName"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
             Margin="356,234,0,0" 
@@ -41,7 +39,7 @@
             Width="166" 
             FontSize="22" 
             FontFamily="Arial Black" 
-            FontWeight="Bold">
+            FontWeight="Bold" Foreground="#FFE37022">
             <Run 
                 Language="pl-pl" 
                 Text="Password"/>
@@ -54,23 +52,24 @@
             VerticalAlignment="Top" 
             Width="180" 
             Height="33" 
-            RenderTransformOrigin="0.186,0.591"/>
+            RenderTransformOrigin="0.186,0.591" BorderBrush="#FFE37022" Foreground="#FFE37022" FontFamily="Arial Black" Background="#FF131215"/>
         <PasswordBox 
             x:Name="Pass"
             HorizontalAlignment="Left"
             Margin="576,234,0,0" 
             VerticalAlignment="Top"
             Width="180" 
-            Height="30"/>
+            Height="30" Foreground="#FFE37022" BorderBrush="#FFE37022" FontFamily="Arial Black" Background="#FF131215"/>
         <Button 
             Content="SUBMIT" 
             HorizontalAlignment="Left" 
             Margin="576,324,0,0" 
             VerticalAlignment="Top" 
             Height="34" Width="180" 
-            Click="RentalMenu" FontSize="16" FontFamily="Arial Black" FontWeight="Bold"/>
-        <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="MainWindow"/>
-        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="76,324,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterMenu"/>
+            Click="RentalMenu" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Foreground="#FFE37022" BorderBrush="#FFE37022" Background="#FF131215"/>
+        <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="MainWindow" BorderBrush="#FFE37022" Foreground="#FFE37022" Background="#FF131215"/>
+        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="76,324,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterMenu" Background="#FF131215" BorderBrush="#FFE37022" Foreground="#FFE37022"/>
+        <Image HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Source="/Zrzut ekranu 2023-06-14 095317.png" Height="181" Width="322"/>
 
     </Grid>
 </Window>

@@ -6,65 +6,65 @@
         xmlns:local="clr-namespace:ProjectCarRentalPH"
         mc:Ignorable="d"
         Title="EmployeeMenu" Height="450" Width="800"
-        MouseDown="Window_MouseDown">
-    <Grid>
+        MouseDown="Window_MouseDown"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Background="#FFE37022">
+    <Grid Background="#FF0D0101">
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="471,37,0,0" 
+            Margin="101,53,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Height="51" 
-            Width="195" 
+            Width="246" 
             FontSize="24" 
             FontWeight="Bold" 
-            FontFamily="Arial Black"><Run 
-                Language="pl-pl" 
-                Text="LOGIN USER"/></TextBlock>
+            FontFamily="Arial Black" Foreground="#FFE37022"><Run Text="LOGIN "/><Run Language="pl-pl" Text="EMPLOYEE"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="356,142,0,0" 
+            Margin="18,150,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Height="33" 
             Width="166" 
             FontSize="22" 
             FontWeight="Bold" 
-            FontFamily="Arial Black"><Run Language="pl-pl" Text="Last Name"/></TextBlock>
+            FontFamily="Arial Black" Foreground="#FFE37022"><Run Language="pl-pl" Text="Last Name"/></TextBlock>
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="356,234,0,0" 
+            Margin="18,242,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Height="30" 
             Width="166" 
             FontSize="22" 
             FontFamily="Arial Black" 
-            FontWeight="Bold"><Run 
+            FontWeight="Bold" Foreground="#FFE37022"><Run 
                 Language="pl-pl" 
                 Text="Password"/></TextBlock>
         <TextBox
             x:Name="LastNameEmpl"
             HorizontalAlignment="Left" 
-            Margin="576,142,0,0" 
+            Margin="189,149,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="180" 
             Height="34" 
-            RenderTransformOrigin="0.186,0.591"/>
+            RenderTransformOrigin="0.186,0.591" BorderBrush="#FFE37022" Background="#FF0D0101" FontFamily="Arial Black" Foreground="#FFE37022"/>
         <PasswordBox 
             x:Name="Pass2"
             HorizontalAlignment="Left"
-            Margin="576,234,0,0" 
+            Margin="189,240,0,0" 
             VerticalAlignment="Top"
             Width="180" 
-            Height="30"/>
+            Height="32" BorderBrush="#FFE37022" RenderTransformOrigin="0.144,0.448" Background="#FF0D0101" Foreground="#FFE37022" FontFamily="Arial Black"/>
         <Button 
             Content="SUBMIT" 
             HorizontalAlignment="Left" 
-            Margin="576,316,0,0" 
+            Margin="189,324,0,0" 
             VerticalAlignment="Top" 
             Height="34" Width="180" 
-            Click="ManageCarsMenu"/>
+            Click="ManageCarsMenu" Foreground="#FFE37022" BorderBrush="#FFE37022" FontFamily="Arial Black" FontSize="16" Background="#FF0D0101"/>
         <Button 
             Content="&lt;==" 
             HorizontalAlignment="Left" 
@@ -75,7 +75,8 @@
             FontSize="14" 
             FontWeight="Bold" 
             FontFamily="Arial Black" 
-            Click="MainWindow"/>
-        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="76,324,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterEmployee"/>
+            Click="MainWindow" BorderBrush="#FFE37022" Foreground="#FFE37022" Background="#FF0D0101"/>
+        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="567,389,0,0" VerticalAlignment="Top" Width="180" Height="34" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Click="RegisterEmployee" Foreground="#FFE37022" BorderBrush="#FFE37022" Background="#FF0D0101"/>
+        <Image HorizontalAlignment="Left" Margin="443,122,0,0" VerticalAlignment="Top" Source="/Auto2.png" Height="237" Width="370"/>
     </Grid>
 </Window>

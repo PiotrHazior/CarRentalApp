@@ -230,6 +230,10 @@ namespace ProjectCarRentalPH
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            finally
+            {
+                RefreshCustomerRentalsDataGrid();
+            }
         }
 
         private void RentalDGV_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -240,7 +244,19 @@ namespace ProjectCarRentalPH
             }
         }
 
+        /// <summary>
+        /// Przycisk INFO - pomaga użytkownikowi
+        /// </summary>
+        private void INFO(object sender, RoutedEventArgs e)
+        {
+            string message = "Aby zarezerwować auto należy kliknąć w wybrane auto w tabeli, podać datę wynajmu, datę zwrotu i kliknąć w przycisk ADD.\n"
+                             + "Natomiast aby zrezygnować z wynajmu auta należy podać tylko ID tego samochodu i kliknąć w przycisk DELETE.";
+
+            MessageBox.Show(message, "Informacja");
+        }
+
         private void YourRental_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
         #endregion
+    
     }
 }
