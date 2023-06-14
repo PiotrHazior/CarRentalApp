@@ -147,6 +147,6 @@ namespace ProjectCarRentalPH
             public string PhoneNumb { get; set; }
         }
         #endregion
-     
+
     }
 }

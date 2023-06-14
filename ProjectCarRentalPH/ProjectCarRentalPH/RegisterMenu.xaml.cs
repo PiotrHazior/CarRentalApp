@@ -146,7 +146,8 @@ namespace ProjectCarRentalPH
                 DragMove();
             }
         }
-        #endregion
+        #endregion     
+
     }
     public class Customer
     {

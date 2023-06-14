@@ -20,6 +20,6 @@
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Margin="140,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="28" BorderBrush="#FFE37022" Foreground="#FFE37022" FontFamily="Arial Black" Background="#FF131215"/>
         <Button Content="&lt;==" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="60" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="CustomerMenu" Foreground="#FFE37022" BorderBrush="#FFE37022" Background="#FF131215"/>
         <Button Content="CONFIRM" HorizontalAlignment="Left" Margin="139,329,0,0" VerticalAlignment="Top" Height="27" Width="153" Click="Button_Confirm" FontSize="22" FontWeight="Bold" FontFamily="Arial Black" BorderBrush="#FFE37022" Foreground="#FFE37022" Background="#FF131215"/>
-        
+
     </Grid>
 </Window>
