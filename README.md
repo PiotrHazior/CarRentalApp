@@ -1,15 +1,6 @@
 # ProjektSemestralnyPO
 
 Baza danych:
-USE master;
-GO
-
-CREATE DATABASE CarRentalPH;
-GO
-
-USE CarRentalPH;
-GO
-
 CREATE TABLE [dbo].[Customers] (
     [ID_Customer] INT          IDENTITY (1, 1) NOT NULL,
     [LastName]    VARCHAR (30) NOT NULL,
