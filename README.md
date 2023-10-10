@@ -1,6 +1,57 @@
-# ProjektSemestralnyPO
+# CarApp - WPF C# Application
 
-Baza danych:
+I would like to show you my first WPF C# application. This application was created for customers who want to rent a car and for employees who manage the car fleet. Below, I present some brief information about what our application offers.
+
+##Application Features - Windows
+### Main Window
+This is the main application window that serves to differentiate between employees and customers.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/06e68468-8488-420a-988b-0559395293d6)
+
+### Customer Menu
+Customers can log in here if they have an account or register if they are new users.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/475c8a29-6288-4c50-99b4-50826d647a26)
+
+### Customer Registration Menu
+This window is dedicated to customer registration. Here, users can create their own accounts.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/52bc8c10-2a10-4204-bad0-90ed1cd44ca0)
+
+### Rental Car Menu
+Allows customers to rent a car. Customers choose a car from the available list, enter rental and return dates, and can seek assistance if needed.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/35fc43a8-7fe0-4502-bdff-6e81754b61f5)
+
+### Employee Menu
+Employees can log in and manage the car fleet. New employees can register in the system.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/2f2741c2-a216-48f6-bf34-0ff4de711842)
+
+### Employee Registration Menu
+This window is used for employee registration. After registration, employees gain access to car management.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/fb3bb691-7360-45a8-b88e-e8f0cd0a1414)
+
+### Manage Car Menu
+This window enables employees to manage cars. Employees can add new cars or remove existing ones.
+![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/757cd7bd-9b0b-4d6d-a0aa-ca2d4d809713)
+
+## Database Tables
+The CarRental application uses a database consisting of five tables:
+-Customers - Stores customer data, such as customer ID, last name, password, and phone number.
+-Employees - Contains employee data, including employee ID, last name, password, and phone number.
+-SportCars - This table collects information about cars, such as car ID, brand, model, and rental price.
+-RentalCar - Stores data related to car rentals, including rental ID, car ID, customer ID, and rental and return dates.
+-Reservation - This table contains information about car reservations, such as reservation ID, car ID, customer ID, and rental and return dates.
+
+## Note
+This summary illustrates how the CarRental application works and outlines its main features. I encourage you to use our application and wish you successful car rentals! :)
+
+
+
+
+
+
+
+
+
+
+Database:
 CREATE TABLE [dbo].[Customers] (
     [ID_Customer] INT          IDENTITY (1, 1) NOT NULL,
     [LastName]    VARCHAR (30) NOT NULL,
@@ -47,49 +98,3 @@ CREATE TABLE [dbo].[Reservation] (
     CONSTRAINT [r3] FOREIGN KEY ([ID_Employee]) REFERENCES [dbo].[Employees] ([ID_Employee]),
     CONSTRAINT [r2] FOREIGN KEY ([ID_SportCar]) REFERENCES [dbo].[SportCars] ([ID_SportCar])
 );
-
-Aplikacja WPF C# - SPORTS RENTAL CAR
-Aplikacja została stworzona dla klientów, którzy chcą wynająć sportowy samochód oraz dla 
-pracowników, którzy mogą zarządzać samochodami. 
-Program zawiera 5 tabel bazodanowy:
-- Customers – przechowuje dane o klientach (ID klienta, nazwisko, hasło oraz telefon)
-- Employees – przechowuje dane o pracownikach (ID pracownika, nazwisko, hasło oraz telefon)
-- SportCars – przechowuje dane o samochodach (ID samochodu, marka, model, cena)
-- RentalCar – przechowuje dane o wynajmie samochodów (ID wynajmu, ID samochodu, ID klienta, 
-data wynajmu oraz data zwrotu
-- Reservation – przechowuje dane o rezerwacji samochodu (ID rezerwacji, ID samochodu, ID klienta, 
-data wynajmu oraz data zwrotu)
-Aplikacja zawiera 7 okienek:
-1. MainWindow – główne okno aplikacji, które zawiera 2 przyciski, dzięki którym można się 
-przenieść do okna dla pracowników lub do okna dla klientów. Wszystko zależy od decyzji 
-użytkownika aplikacji. 
-2. EmployeeMenu – okno dla pracowników. Jeśli dany pracownik jest już w systemie, ma 
-możliwość zalogowania się i przejścia do następnego okna do zarządzania samochodami. 
-Natomiast jeśli osoba jeszcze nie ma konta, ma możliwość zarejestrowania się w systemie 
-poprzez kliknięcie w przycisk Register.
-3. RegisterEmployee – okno, dzięki któremu użytkownik ma możliwość stać się pracownikiem 
-firmy i zarządzaniem sportowymi samochodami. Należy podać tylko swoje nazwisko, hasło 
-oraz telefon, który wyląduje w systemie po zatwierdzeniu. 
-4. ManageCarsMenu – okno do zarządzania samochodami w systemie. Pracownik może dodać 
-samochód do wynajęcia poprzez podanie marki samochodu, modelu oraz ceny wynajmu, 
-bądź też usunąć samochód z systemu poprzez podanie samego ID samochodu. W razie 
-problemów jak zrobić daną czynność, w tym oknie jest przycisk HELP, który wytłumaczy jak i 
-co należy zrobić.
-5. CustomerMenu – okno dla klientów. Jeśli klient jest już w systemie i ma konto, może bez 
-problemu zalogować się i przejść do następnego okna służącego do wynajmowania 
-samochodu. Gdy jednak dany użytkownik nie posiada jeszcze konta, ma możliwość 
-zarejestrowania się poprzez wciśnięcie przycisku Register, który przerzuci do następnego 
-okna.
-6. RegisterMenu – okno do rejestracji dla klientów. Dane wpisane przez użytkownika, takie jak 
-nazwisko, hasło oraz telefon, po zatwierdzeniu lądują w systemie, dzięki czemu dana osoba 
-ma możliwość zalogowania się na to konto.
-7. RentalMenu – okno stworzone do wynajmowania samochodów. Klient ma możliwość 
-wynajmu samochodu dostępnego w systemie, poprzez wybranie danego samochodu w tabeli 
-oraz podanie daty wynajmu i daty zwrotu. W razie problemów istnieje przycisk o nazwie 
-HELP, który wytłumaczy jak to zrobić. Jeśli natomiast klient chce anulować wynajem 
-samochodu, ma oczywiście taką możliwość. Musi tylko podać ID danego samochodu.
-Uwaga:
-Rejestracja w oknie RegisterEmployee tworzy konto dla pracownika, więc nie może zalogować się w 
-oknie CustomerMenu, ponieważ jest to okno dla klientów aplikacji. Działa to również w drugą stronę. 
-Klient, po założeniu konta w oknie RegisterMenu, nie ma możliwości zalogowania się jako pracownik 
-oraz do zarządzania samochodami w systemie.
