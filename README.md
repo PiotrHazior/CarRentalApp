@@ -1,8 +1,9 @@
 # CarApp - WPF C# Application
 
-I would like to show you my first WPF C# application. This application was created for customers who want to rent a car and for employees who manage the car fleet. Below, I present some brief information about what our application offers.
+I would like to show you my first WPF C# application. This application was created for customers who want to rent a car and for employees who manage the car fleet. Below, I present some brief information about what application offers.
 
-##Application Features - Windows
+## Application Features - Windows
+
 ### Main Window
 This is the main application window that serves to differentiate between employees and customers.
 ![image](https://github.com/PiotrHazior/ProjektSemestralnyPO/assets/86978938/06e68468-8488-420a-988b-0559395293d6)
